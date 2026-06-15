@@ -1,0 +1,27 @@
+# Segurança — nunca versionar dados de clientes ou material sensível
+# (a skill não usa nada disso, mas o .gitignore protege quem clonar e adaptar)
+*.txt
+sped_*
+*.sped
+*.efd
+clientes/
+dados_clientes/
+*.cliente.*
+relatorios/
+output_*.pdf
+relatorio_*.pdf
+
+# Credenciais — nunca versionar
+.env
+*.key
+*.pem
+secrets.*
+
+# Sistema e temporários
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+__pycache__/
+.venv/
+venv/
