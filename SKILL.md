@@ -72,18 +72,25 @@ Rodar buscas web nas fontes abaixo, nesta ordem de prioridade. A lista completa,
 com os links e o que procurar em cada uma, está em `references/fontes_oficiais.md`
 — leia esse arquivo se precisar dos endereços ou quiser ampliar a cobertura.
 
-**Fontes primárias (`gov.br` — confiança alta):**
+**Fontes primárias (oficiais — confiança alta):**
 
-- `site:gov.br/receitafederal reforma tributária CBS IBS`
-- `site:gov.br/fazenda reforma tributária nota`
-- `site:in.gov.br CBS IBS "imposto seletivo"` (Diário Oficial da União)
-- Comitê Gestor do IBS — resoluções e atos conjuntos
-- Planalto — leis complementares e decretos do ano corrente
+- **Comitê Gestor do IBS (CGIBS)** — https://www.cgibs.gov.br/inicial
+  (portal oficial; ver também `/resolucoes` e `/atos-conjuntos`)
+- **Receita Federal** — `site:gov.br/receitafederal reforma tributária CBS IBS`
+- **Diário Oficial da União** — `site:in.gov.br CBS IBS "imposto seletivo"`
+- **Ministério da Fazenda** — `site:gov.br/fazenda reforma tributária nota`
+- **Planalto** — leis complementares e decretos do ano corrente
+- **Portal Conformidade Fácil (SVRS/ENCAT)** — https://dfe-portal.svrs.rs.gov.br/Cff
+  (Notas Técnicas da Reforma, Tabela de Classificação Tributária/cClassTrib,
+  validações de documento fiscal — útil para o lado operacional da NF-e)
 
-**Apoio interpretativo (confirmar sempre na fonte primária):**
+**Apoio institucional e interpretativo (confirmar sempre na fonte primária):**
 
-- Portais especializados e imprensa jurídica, usados só para localizar o ato e
-  depois conferir no Diário Oficial.
+- **COMSEFAZ** — https://comsefaz.org.br/novo (entidade dos secretários estaduais
+  de fazenda; notícias, posicionamentos dos estados e a aba Legislações — não é
+  órgão emissor de norma)
+- Portais especializados e imprensa jurídica (ex.: reformatributaria.com), usados
+  só para localizar o ato e depois conferir na fonte primária.
 
 ### Passo 2 — Conferir os parâmetros críticos
 
@@ -137,28 +144,65 @@ incerteza do que um número que aparenta firmeza que não tem.
 
 ---
 
-## Formato do relatório final
+## Entregáveis: painel HTML + relatório em texto
 
-Ao terminar, exibir um resumo enxuto:
+Ao final de cada rodada, gere dois relatórios a partir dos achados: um **painel
+HTML** visual e didático e um **relatório em texto** no layout clássico. O
+caminho mais confiável é montar um JSON com os itens e rodar o script
+`scripts/gerar_relatorio.py`, que cuida da formatação dos dois.
 
+### Passo a — montar o JSON da rodada
+
+Organize o que você encontrou neste formato (todos os campos de lista são
+opcionais; preencha o que houver):
+
+```json
+{
+  "data": "AAAA-MM-DD",
+  "titulo": "Monitor da Reforma Tributária",
+  "fontes_verificadas": 6,
+  "rodape": "",
+  "nova_legislacao": [
+    {"titulo": "...", "data": "DD/MM/AAAA", "fonte": "DOU / CGIBS",
+     "tipo": "Ato Conjunto", "resumo": "...", "link": "https://..."}
+  ],
+  "destaques": [
+    {"classificacao": "RELEVANTE", "titulo": "...", "data": "...",
+     "fonte": "...", "resumo": "...", "link": "https://..."}
+  ],
+  "alertas": [
+    {"data": "DD/MM/AAAA", "titulo": "...", "descricao": "..."}
+  ]
+}
 ```
-📋 MONITOR DA REFORMA TRIBUTÁRIA — [data]
-──────────────────────────────────────────
-Fontes verificadas: [N]
-Novidades: [N]  (CRÍTICO [N] · RELEVANTE [N] · INFORMATIVO [N])
 
-Destaques:
-  • [ato] — [uma linha]
+`classificacao` aceita CRÍTICO, RELEVANTE ou INFORMATIVO. Em `nova_legislacao`
+ficam os atos publicados; em `destaques`, as notícias e análises da semana; em
+`alertas`, os prazos com data. Há um exemplo pronto em
+`references/exemplo/rodada_exemplo.json`.
 
-Próximos eventos esperados:
-  • [data]: [evento]
+### Passo b — gerar os relatórios
 
-Próxima rodada sugerida: [data]
+```bash
+python3 scripts/gerar_relatorio.py \
+  --dados rodada.json \
+  --saida "<pasta de saída>" \
+  --rodape "Seu Escritório"
 ```
 
-Depois do resumo, se houver novidades, liste-as com fonte e link para o usuário
-conferir. Feche reforçando que o monitor é um apoio de acompanhamento e que a
-decisão e a leitura da norma na íntegra continuam sendo do profissional.
+O `--rodape` é opcional — é a assinatura que aparece no rodapé (ex.: o nome do
+escritório). Sem ele, o relatório sai neutro. O script grava:
+
+- **`dashboard_RT.html`** — painel com contadores, cards coloridos por
+  classificação, prazos com contagem regressiva e busca; abre em qualquer
+  navegador, sem internet.
+- **`monitor_RT_AAAA-MM-DD.md`** — o relatório em texto, nas seções Nova
+  Legislação · Destaques da Semana · Alertas Normativos.
+
+Ao terminar, o script imprime uma linha JSON com as contagens. Use-a para
+resumir ao usuário em uma frase e apresente os dois arquivos. Feche reforçando
+que o monitor é um apoio de acompanhamento e que a leitura da norma na íntegra
+continua sendo do profissional.
 
 ## Rodar de forma agendada
 
