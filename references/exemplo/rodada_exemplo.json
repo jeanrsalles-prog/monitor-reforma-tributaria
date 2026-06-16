@@ -1,0 +1,59 @@
+{
+  "data": "2026-06-08",
+  "titulo": "Monitor da Reforma Tributária",
+  "fontes_verificadas": 6,
+  "rodape": "",
+  "nova_legislacao": [
+    {
+      "titulo": "Ato Conjunto RFB/CGIBS nº 2, de 27 de maio de 2026",
+      "data": "03/06/2026",
+      "fonte": "Diário Oficial da União / CGIBS",
+      "tipo": "Ato Conjunto RFB/CGIBS",
+      "resumo": "Autoriza a publicação do Manual de Integração v1.0 e do Swagger da Plataforma Pública do Split Payment. Inaugura a fase de desenvolvimento tecnológico pelos PSPs para a segregação automática de CBS e IBS na liquidação das transações de consumo. Implantação começa em 01/01/2027 de forma facultativa (Etapa 1 — boleto e Pix); cartões entram na Etapa 2, com data ainda indefinida.",
+      "link": "https://www.cgibs.gov.br/atos-conjuntos"
+    }
+  ],
+  "destaques": [
+    {
+      "classificacao": "RELEVANTE",
+      "titulo": "RFB esclarece regras para uso de créditos de PIS/Cofins na transição para a CBS",
+      "data": "junho/2026",
+      "fonte": "Ministério da Fazenda / RFB",
+      "resumo": "Os saldos credores de PIS/Pasep e Cofins permanecem válidos e poderão ser usados para compensação com outros tributos federais ou ressarcimento. Empresas do Lucro Real com créditos acumulados devem mapear e registrar esses saldos até 31/12/2026 (Art. 602, LC 214/2025).",
+      "link": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/junho"
+    },
+    {
+      "classificacao": "RELEVANTE",
+      "titulo": "Processo tributário pós-reforma: competência para demandas envolvendo CBS e IBS",
+      "data": "03/06/2026",
+      "fonte": "Consultor Jurídico (ConJur)",
+      "resumo": "Artigo analisa o problema da competência jurisdicional para litígios sobre CBS e IBS. O Art. 149-B da CF prevê regramento comum, gerando conflito entre Justiça Federal (CBS) e Estadual (IBS). Tendência apontada: vara federal especializada com competência nacional.",
+      "link": "https://www.conjur.com.br/2026-jun-03/"
+    },
+    {
+      "classificacao": "INFORMATIVO",
+      "titulo": "PGFN: reforma vai reduzir desigualdades e impulsionar desenvolvimento regional",
+      "data": "03/06/2026",
+      "fonte": "Ministério da Fazenda / PGFN",
+      "resumo": "Em fórum sobre direito tributário, a chefe da PGFN destacou o potencial da reforma para reduzir desigualdades regionais com a tributação pelo destino.",
+      "link": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/junho"
+    }
+  ],
+  "alertas": [
+    {
+      "data": "15/06/2026",
+      "titulo": "Prazo final: sugestões ao Regulamento IBS/CBS",
+      "descricao": "Encerra o prazo para envio de sugestões ao Regulamento do IBS e da CBS via Portal CGIBS. Sugestões devem indicar dispositivo, justificativa técnica e impactos."
+    },
+    {
+      "data": "31/07/2026",
+      "titulo": "Alíquotas de referência CBS e IBS (prazo TCU)",
+      "descricao": "Prazo para RFB e CGIBS submeterem ao TCU as alíquotas de referência da CBS 2027 e IBS 2029. O resultado determina as alíquotas definitivas a partir de 2027."
+    },
+    {
+      "data": "01/08/2026",
+      "titulo": "NF-e e NFC-e: campos IBS/CBS obrigatórios",
+      "descricao": "Contribuintes do Lucro Real e Presumido passam a ter obrigação de preencher os campos IBS/CBS nos documentos fiscais. Fim da tolerância do Ato Conjunto RFB/CGIBS nº 1/2025. Multa de 1% sobre o valor da operação."
+    }
+  ]
+}
